@@ -1,0 +1,264 @@
+{
+  "restaurants":[
+    {
+      "id":1,
+      "name":"тестО",
+      "opening":"08:00:00",
+      "closing":"21:00:00",
+      "lat":56.8291437,
+      "lon":60.5989318,
+      "food":[
+        [
+          {
+            "id":15,
+            "name":"Морс домашний 1л",
+            "price":480.0,
+            "type_id":8,
+            "weight":1000.0,
+            "calories":565.29,
+            "proteins":1.38,
+            "fats":0.81,
+            "carbohydrates":138.12,
+            "cooking_time":15.0,
+            "description":"Домашний морс из спелых ягод клюквы и брусники.",
+            "img_path":"pictures/HuJ5wAS-_UE.jpg"
+          }
+        ],
+        [
+          {
+            "id":4,
+            "name":"Мясная тарелка",
+            "price":750.0,
+            "type_id":3,
+            "weight":400.0,
+            "calories":872.52,
+            "proteins":53.22,
+            "fats":64.49,
+            "carbohydrates":19.82,
+            "cooking_time":15.0,
+            "description":"Деликатесы собственного приготовления: рулет из баранины, нежная буженина, куриный рулет с перцем и куриный рулет с грибами и омлетом. Подаем со сливочным хреном и зеленью.",
+            "img_path":"pictures/wYXLdkxI0Aw.jpg"
+          }
+        ],
+        [
+          {
+            "id":3,
+            "name":"Оливье по-зимнему",
+            "price":320.0,
+            "type_id":2,
+            "weight":140.0,
+            "calories":230.58,
+            "proteins":10.73,
+            "fats":17.23,
+            "carbohydrates":8.15,
+            "cooking_time":15.0,
+            "description":"Салат из вареных овощей и перепелиных яиц, с консервированным горошком и телячьим языком. Заправляем майонезом.",
+            "img_path":"pictures/vC8W9VuPuSU.jpg"
+          }
+        ],
+        [
+          {
+            "id":6,
+            "name":"Ростбиф с жемчужным и маринованным луком",
+            "price":640.0,
+            "type_id":3,
+            "weight":210.0,
+            "calories":761.73,
+            "proteins":30.88,
+            "fats":67.59,
+            "carbohydrates":7.48,
+            "cooking_time":15.0,
+            "description":"Сочная телятина прожарки medium, маринованная с кориандром и репчатым луком. Подаем с жемчужным луком, спелыми томатами черри и миксом салатных листьев.",
+            "img_path":"pictures/Qxfoq6pneww.jpg"
+          }
+        ],
+        [
+          {
+            "id":5,
+            "name":"Рыбная тарелка",
+            "price":1250.0,
+            "type_id":4,
+            "weight":300.0,
+            "calories":440.86,
+            "proteins":47.8,
+            "fats":25.14,
+            "carbohydrates":5.85,
+            "cooking_time":15.0,
+            "description":"Лосось слабой соли, вяленый муксун и масляная рыба холодного копчения. Подаем с рукколой, гигантскими каперсами и сыром Грана Падано.",
+            "img_path":"pictures/K-xeKPdqL8w.jpg"
+          }
+        ],
+        [
+          {
+            "id":8,
+            "name":"Цыпленок тапака с картофелем и травами",
+            "price":720.0,
+            "type_id":5,
+            "weight":515.0,
+            "calories":1264.88,
+            "proteins":70.1,
+            "fats":89.97,
+            "carbohydrates":43.69,
+            "cooking_time":15.0,
+            "description":"Фермерский цыплёнок приготовленный под прессом с домашней аджикой, в сопровождении молодого картофеля, обжаренного до золотистой корочки, маринованного перца чили и чеснока.",
+            "img_path":"pictures/kBd9lh0NMjY.jpg"
+          }
+        ],
+        [
+          {
+            "id":9,
+            "name":"Шоколадный торт с вишней",
+            "price":270.0,
+            "type_id":6,
+            "weight":160.0,
+            "calories":501.63,
+            "proteins":5.48,
+            "fats":26.34,
+            "carbohydrates":60.65,
+            "cooking_time":15.0,
+            "description":"Шоколадный бисквит с муссом из горького шоколада и соусом из терпкой вишни.",
+            "img_path":"pictures/G4v26wSyWxQ.jpg"
+          }
+        ]
+      ]
+    },
+    {
+      "id":2,
+      "name":"вкусный",
+      "opening":"08:00:00",
+      "closing":"21:00:00",
+      "lat":56.8291437,
+      "lon":60.5989318,
+      "food":[
+        [
+          {
+            "id":7,
+            "name":"Барашек с томатами",
+            "price":730.0,
+            "type_id":3,
+            "weight":380.0,
+            "calories":1187.92,
+            "proteins":49.19,
+            "fats":105.95,
+            "carbohydrates":9.39,
+            "cooking_time":15.0,
+            "description":"Фермерская баранина, запечённая со спелыми томатами и шампиньонами под соусом из домашних сливок и нежнейшего сулугуни.",
+            "img_path":"pictures/i3gr6CxHBsM.jpg"
+          }
+        ],
+        [
+          {
+            "id":2,
+            "name":"Борщ с грузинской булочкой и салом",
+            "price":320.0,
+            "type_id":1,
+            "weight":320.0,
+            "calories":518.02,
+            "proteins":18.46,
+            "fats":31.92,
+            "carbohydrates":39.23,
+            "cooking_time":15.0,
+            "description":"Наваристый борщ из фермерской телятины со сметаной и свежей зеленью. Подаем с деревенской сметаной и мини-шоти с соленым салом и зеленым луком.",
+            "img_path":"pictures/eZh-QmtA9XY.jpg"
+          }
+        ],
+        [
+          {
+            "id":13,
+            "name":"Вафельная корзинка с орешками",
+            "price":220.0,
+            "type_id":6,
+            "weight":75.0,
+            "calories":403.19,
+            "proteins":9.37,
+            "fats":23.14,
+            "carbohydrates":39.37,
+            "cooking_time":15.0,
+            "description":"Грецкие орехи с вареной сгущенкой, свежей клубникой и голубикой, в хрустящей вафельной корзинке.",
+            "img_path":"pictures/VwDCyY1sZns.jpg"
+          }
+        ],
+        [
+          {
+            "id":14,
+            "name":"Картофель фри",
+            "price":110.0,
+            "type_id":7,
+            "weight":110.0,
+            "calories":128.01,
+            "proteins":2.31,
+            "fats":2.83,
+            "carbohydrates":23.31,
+            "cooking_time":15.0,
+            "description":"Подаем с кетчупом.",
+            "img_path":"pictures/mHr5y5WBKGA.jpg"
+          }
+        ],
+        [
+          {
+            "id":1,
+            "name":"Крем-суп из сладкой тыквы",
+            "price":340.0,
+            "type_id":1,
+            "weight":290.0,
+            "calories":368.99,
+            "proteins":8.84,
+            "fats":27.58,
+            "carbohydrates":21.35,
+            "cooking_time":15.0,
+            "description":"Нежный крем-суп из сладкой тыквы, сливок и обжаренного до золотистого цвета репчатого лука. Подаем с тёртым копчёным сулугуни и тыквенными семечками.",
+            "img_path":"pictures/dQdEFOUDM68.jpg"
+          }
+        ],
+        [
+          {
+            "id":11,
+            "name":"Медовик",
+            "price":280.0,
+            "type_id":6,
+            "weight":80.0,
+            "calories":258.08,
+            "proteins":3.45,
+            "fats":12.69,
+            "carbohydrates":32.52,
+            "cooking_time":15.0,
+            "description":"По-настоящему медовый десерт с нежным кремом и душистым медом.",
+            "img_path":"pictures/PWmSVeDAnY8.jpg"
+          }
+        ],
+        [
+          {
+            "id":12,
+            "name":"Мини-гамбургер с картофелем фри",
+            "price":310.0,
+            "type_id":7,
+            "weight":330.0,
+            "calories":714.3,
+            "proteins":26.64,
+            "fats":42.33,
+            "carbohydrates":56.69,
+            "cooking_time":15.0,
+            "description":"Самое любимое лакомство маленьких генацвале!",
+            "img_path":"pictures/VHEFkJIVX1A.jpg"
+          }
+        ],
+        [
+          {
+            "id":10,
+            "name":"Мороженое с сухофруктами",
+            "price":150.0,
+            "type_id":6,
+            "weight":100.0,
+            "calories":300.23,
+            "proteins":4.88,
+            "fats":16.89,
+            "carbohydrates":32.18,
+            "cooking_time":15.0,
+            "description":"Пломбир с курагой, черносливом и грецким орехом. Подаем с вафельной крошкой и мятой.",
+            "img_path":"pictures/Q3Z_JkQ-2FI.jpg"
+          }
+        ]
+      ]
+    }
+  ]
+}

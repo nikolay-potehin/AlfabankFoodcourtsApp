@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">AlfabankFoodcourt</string>
+    <string name="login"><u>Войти</u></string>
+    <string name="register"><u>Регистрация</u></string>
+</resources>
