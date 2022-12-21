@@ -3,17 +3,14 @@ package com.example.alfabankfoodcourt;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
     private final RecyclerViewInterface recyclerViewInterface;
@@ -40,10 +37,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
         holder.nameView.setText(items.get(position).getName());
         holder.descriptionView.setText(items.get(position).getDescription());
         holder.imageView.setImageResource(items.get(position).getImage_default());
-        holder.deliveryView.setText(items.get(position).getDeliveryTime());
         holder.averageCheckView.setText(items.get(position).getAverageCheck());
         holder.ratingView.setText(String.format(Locale.getDefault(), "%.1f", items.get(position).getRating()));
-        holder.mall.setText(items.get(position).getMall());
+        holder.mallView.setText(items.get(position).getMallAndDistance());
+        holder.floorView.setText(items.get(position).getFloor());
 
         Picasso.get().load(items.get(position).getImageURL()).into(holder.imageView);
     }

@@ -34,12 +34,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
-            android:src="@drawable/ic_baseline_delivery_dining_24"/>
+            android:src="@drawable/ic_baseline_stairs_24"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/restaurant_average_delivery_time"
-            tools:text="0-99 мин"
+            android:id="@+id/restaurant_floor"
+            tools:text="1 этаж"
             android:textColor="@color/black"
             android:textSize="18sp"
             android:layout_marginEnd="15dp"/>

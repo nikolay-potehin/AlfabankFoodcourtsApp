@@ -7,12 +7,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.squareup.picasso.Picasso;
-
 public class MyViewHolder extends RecyclerView.ViewHolder {
 
     ImageView imageView;
-    TextView nameView, descriptionView, deliveryView, averageCheckView, ratingView, mall;
+    TextView nameView, descriptionView, floorView, averageCheckView, ratingView, mallView;
 
     public MyViewHolder(@NonNull View itemView, RecyclerViewInterface recyclerViewInterface) {
         super(itemView);
@@ -20,10 +18,10 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
         imageView = itemView.findViewById(R.id.image_view);
         nameView = itemView.findViewById(R.id.name);
         descriptionView = itemView.findViewById(R.id.restaurant_description);
-        deliveryView = itemView.findViewById(R.id.restaurant_average_delivery_time);
+        floorView = itemView.findViewById(R.id.restaurant_floor);
         averageCheckView = itemView.findViewById(R.id.restaurant_average_check);
         ratingView = itemView.findViewById(R.id.restaurant_rating);
-        mall = itemView.findViewById(R.id.mall);
+        mallView = itemView.findViewById(R.id.mall);
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override

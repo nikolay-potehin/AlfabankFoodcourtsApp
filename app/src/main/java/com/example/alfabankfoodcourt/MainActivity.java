@@ -5,8 +5,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.location.Address;
 import android.os.Bundle;
-import android.widget.ListAdapter;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -21,11 +21,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements RecyclerViewInterface {
@@ -43,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         recyclerView = findViewById(R.id.restaurant_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        loadJSONFromURL(JSON_URL);
+        loadJSONFromURL();
     }
 
     private List<FoodItem> FoodDataFromJSON (ArrayList<JSONObject> jsonItems) {
@@ -87,26 +85,39 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
                         foodItems,
                         jsonItem.getString("name"),
                         jsonItem.getString("description"),
-                        10,
-                        20,
+                        jsonItem.getInt("floor"),
                         (int) jsonItem.getDouble("min_price"),
                         (int) jsonItem.getDouble("max_price"),
                         (float) jsonItem.getDouble("rating"),
                         (String) jsonItem.get("rest_pic"),
-                        "ТРЦ Гринвич"));
-//                        jsonItem.getString("mall")));
+                        (String) jsonItem.get("mall"),
+                        (float) jsonItem.getDouble("lat"),
+                        (float) jsonItem.getDouble("lon")));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
+
+        // If GPS is on, sort restaurants depending on a user geolocation
+        if (AppDataHolder.getInstance().isUserGPSOn) {
+            Address userAddress = AppDataHolder.getInstance().getUserAddress();
+            float userLatitude = (float) userAddress.getLatitude();
+            float userLongitude = (float) userAddress.getLongitude();
+
+            for (RestaurantItem restaurantItem : restaurantItems) {
+                restaurantItem.distanceFromUser = restaurantItem.calculateDistanceFromUser(userLongitude, userLatitude);
+            }
+
+            Collections.sort(restaurantItems, (item1, item2) -> Float.compare(item1.getDistanceFromUser(), item2.getDistanceFromUser()));
+        }
         return restaurantItems;
     }
 
-    private void loadJSONFromURL(String url) {
+    private void loadJSONFromURL() {
         final ProgressBar progressBar = findViewById(R.id.progress_bar);
         progressBar.setVisibility(RecyclerView.VISIBLE);
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, MainActivity.JSON_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

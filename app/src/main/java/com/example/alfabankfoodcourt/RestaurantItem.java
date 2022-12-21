@@ -1,11 +1,12 @@
 package com.example.alfabankfoodcourt;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class RestaurantItem implements Serializable {
 
+    private static final DecimalFormat df = new DecimalFormat("0.00");
     List<FoodItem> foodItems;
 
     public List<FoodItem> getFoodItems() {
@@ -16,10 +17,6 @@ public class RestaurantItem implements Serializable {
         this.foodItems = foodItems;
     }
 
-    String name;
-    String description;
-    String mall;
-
     public String getImageURL() {
         return imageURL;
     }
@@ -28,42 +25,44 @@ public class RestaurantItem implements Serializable {
         this.imageURL = imageURL;
     }
 
-    String imageURL;
+    public String getFloor() {
+        return Integer.toString(floor) + " этаж";
+    }
 
-    int minDeliveryTime, maxDeliveryTime, minAverageCheck, maxAverageCheck;
+    public void setFloor(int floor) {
+        this.floor = floor;
+    }
+
+    String name, description, mall, imageURL;
+    int minAverageCheck, maxAverageCheck, image_default, floor;
     float rating;
-    int image_default;
+    float lat;
+    float lon;
+
+    public float getDistanceFromUser() {
+        return distanceFromUser;
+    }
+
+    public void setDistanceFromUser(float distanceFromUser) {
+        this.distanceFromUser = distanceFromUser;
+    }
+
+    float distanceFromUser;
 
     public String getMall() {
         return mall;
+    }
+
+    public String getMallAndDistance() {
+        return getMall() + ", " + df.format(getDistanceFromUser()) + " км";
     }
 
     public void setMall(String mall) {
         this.mall = mall;
     }
 
-    public String getDeliveryTime() {
-        return minDeliveryTime + "-" + maxDeliveryTime + " мин";
-    }
-
     public String getAverageCheck() {
         return minAverageCheck + "-" + maxAverageCheck + " ₽";
-    }
-
-    public int getMinDeliveryTime() {
-        return minDeliveryTime;
-    }
-
-    public void setMinDeliveryTime(int minDeliveryTime) {
-        this.minDeliveryTime = minDeliveryTime;
-    }
-
-    public int getMaxDeliveryTime() {
-        return maxDeliveryTime;
-    }
-
-    public void setMaxDeliveryTime(int maxDeliveryTime) {
-        this.maxDeliveryTime = maxDeliveryTime;
     }
 
     public int getMinAverageCheck() {
@@ -114,17 +113,46 @@ public class RestaurantItem implements Serializable {
         this.image_default = image_default;
     }
 
-    public RestaurantItem(List<FoodItem> foodItems, String name, String email, int minDeliveryTime, int maxDeliveryTime, int minAverageCheck, int maxAverageCheck, float rating, String imageURL, String mall) {
+    public RestaurantItem(List<FoodItem> foodItems, String name, String email, int floor,
+                          int minAverageCheck, int maxAverageCheck, float rating, String imageURL,
+                          String mall, float lat, float lon) {
         this.foodItems = foodItems;
         this.name = name;
         this.description = email;
-        this.minDeliveryTime = minDeliveryTime;
-        this.maxDeliveryTime = maxDeliveryTime;
+        this.floor = floor;
         this.minAverageCheck = minAverageCheck;
         this.maxAverageCheck = maxAverageCheck;
         this.rating = rating;
         this.image_default = R.drawable.ic_outline_image_24;
         this.imageURL = imageURL;
         this.mall = mall;
+        this.lat = lat;
+        this.lon = lon;
+        this.distanceFromUser = 0;
+    }
+
+    public float calculateDistanceFromUser (float longitude, float latitude) {
+        double d2r = Math.PI / 180;
+
+        try {
+            double dlong = (Math.abs(longitude - lon)) * d2r;
+            double dlat = (Math.abs(latitude - lat)) * d2r;
+            double a =
+                    Math.pow(Math.sin(dlat / 2.0), 2)
+                            + Math.cos(latitude * d2r)
+                            * Math.cos(lat * d2r)
+                            * Math.pow(Math.sin(dlong / 2.0), 2);
+            double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+            return (float) (6367 * c);
+
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    private static int compareTo(long a, long b) {
+        return Long.compare(a, b);
     }
 }
