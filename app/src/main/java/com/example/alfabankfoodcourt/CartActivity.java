@@ -7,6 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +19,9 @@ public class CartActivity extends AppCompatActivity implements RecyclerViewInter
 
     RecyclerView recyclerView;
     CartAdapter adapter;
+    Button checkoutButton;
+    ImageView backButton;
+    TextView totalPriceView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,26 +31,33 @@ public class CartActivity extends AppCompatActivity implements RecyclerViewInter
         recyclerView = findViewById(R.id.cart_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        Map<FoodItem, Integer> foodCounts = AppDataHolder.getInstance().getFoodCounts();
-        List<CartItem> cartItems = new ArrayList<>();
+        List<CartItem> cartItems = AppDataHolder.getInstance().getCartItems();
 
-        for (int i = 0; i < foodCounts.size(); i++) {
+        adapter = new CartAdapter(getApplicationContext(), cartItems, CartActivity.this);
+        recyclerView.setAdapter(adapter);
 
-        }
+        totalPriceView = findViewById(R.id.total_price);
+        updateTotalPriceView(AppDataHolder.getInstance().countTotalPrice());
 
-//        adapter = new FoodAdapter(getApplicationContext(), restaurant.foodItems, RestaurantActivity.this);
-//        recyclerView.setAdapter(adapter);
-
-        Button checkoutButton = findViewById(R.id.checkout_button);
+        checkoutButton = findViewById(R.id.checkout_button);
+        checkoutButton.setEnabled(false);
         checkoutButton.setOnClickListener(view -> {
             Intent intent = new Intent(CartActivity.this, CheckoutActivity.class);
 
             startActivity(intent);
         });
+
+        backButton = findViewById(R.id.back_button);
+        backButton.setOnClickListener(view -> finish());
+    }
+
+    public void updateTotalPriceView (float totalPrice) {
+        String text = totalPrice + " р.";
+        totalPriceView.setText(text);
     }
 
     @Override
     public void onItemClick(int position) {
-
+        updateTotalPriceView(AppDataHolder.getInstance().countTotalPrice());
     }
 }

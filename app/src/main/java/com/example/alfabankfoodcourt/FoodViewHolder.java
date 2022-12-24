@@ -1,6 +1,7 @@
 package com.example.alfabankfoodcourt;
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -11,6 +12,7 @@ public class FoodViewHolder extends RecyclerView.ViewHolder {
 
     ImageView imageView;
     TextView nameView, descriptionView, priceView;
+    Button dishAddButton;
 
     public FoodViewHolder(@NonNull View itemView, RecyclerViewInterface recyclerViewInterface) {
         super(itemView);
@@ -19,6 +21,7 @@ public class FoodViewHolder extends RecyclerView.ViewHolder {
         nameView = itemView.findViewById(R.id.dish_name);
         descriptionView = itemView.findViewById(R.id.dish_description);
         priceView = itemView.findViewById(R.id.dish_price);
+        dishAddButton = itemView.findViewById(R.id.dish_add_button);
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -2,6 +2,7 @@ package com.example.alfabankfoodcourt;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -37,6 +38,8 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodViewHolder> {
         holder.nameView.setText(foodItems.get(position).getName());
         holder.descriptionView.setText(foodItems.get(position).getDescription());
         holder.priceView.setText(String.format(Locale.getDefault(), "%.1f р.", foodItems.get(position).getPrice()));
+
+        holder.dishAddButton.setOnClickListener(view -> AppDataHolder.getInstance().addFood(foodItems.get(position)));
 
         Picasso.get().load(foodItems.get(position).getImageURL()).into(holder.imageView);
     }

@@ -54,6 +54,9 @@ public class RestaurantItem implements Serializable {
     }
 
     public String getMallAndDistance() {
+        if (getDistanceFromUser() == 0.0) {
+            return getMall() + ", ? км";
+        }
         return getMall() + ", " + df.format(getDistanceFromUser()) + " км";
     }
 

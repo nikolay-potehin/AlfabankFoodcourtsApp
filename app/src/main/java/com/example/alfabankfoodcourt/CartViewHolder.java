@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,8 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class CartViewHolder extends RecyclerView.ViewHolder {
 
     ImageView imageView;
-    TextView titleView, descriptionView, priceView, amountView;
-    Button lessButton, moreButton;
+    TextView titleView, descriptionView, priceView, amountView, lessButton, moreButton;
 
     public CartViewHolder(@NonNull View itemView, RecyclerViewInterface recyclerViewInterface) {
         super(itemView);

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".CartItem">
 
     <androidx.cardview.widget.CardView
@@ -102,7 +102,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
                         android:textSize="32sp"
-                        tools:text=" -  " />
+                        android:text=" -  " />
 
                     <TextView
                         android:id="@+id/cart_item_amount"
@@ -118,7 +118,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
                         android:textSize="32sp"
-                        tools:text="  + " />
+                        android:text="  + " />
 
                 </LinearLayout>
 

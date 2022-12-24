@@ -48,8 +48,8 @@ public class AccessLocationActivity extends AppCompatActivity {
                         Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
                     ContextCompat.checkSelfPermission(AccessLocationActivity.this,
                             Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-//                    Toast.makeText(AccessLocationActivity.this, "Доступ к геолокации получен",
-//                            Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AccessLocationActivity.this, "Доступ к геолокации получен",
+                            Toast.LENGTH_SHORT).show();
 
                     final LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 

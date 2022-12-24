@@ -4,7 +4,8 @@ import android.content.Context;
 import android.location.Address;
 import android.widget.Toast;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -28,44 +29,50 @@ public class AppDataHolder {
 
     private Address userAddress;
 
-    private final Map<FoodItem, Integer> foodCounts = new HashMap<FoodItem, Integer>();
+    private List<CartItem> cartItems = new ArrayList<>();
 
     private static final AppDataHolder holder = new AppDataHolder();
     public static AppDataHolder getInstance() { return holder; }
 
-    public Map<FoodItem, Integer> getFoodCounts() { return foodCounts; }
+    public List<CartItem> getCartItems() { return cartItems; }
 
-    private FoodItem getFoodItemByType (FoodItem foodType) {
-        for (FoodItem foodItem : foodCounts.keySet()) {
-            if (Objects.equals(foodType.name, foodItem.name)) {
-                return foodItem;
+    public CartItem searchCartItemByName (String cartItemName) {
+        for (CartItem cartItem : cartItems) {
+            if (Objects.equals(cartItemName, cartItem.foodItem.name)) {
+                return cartItem;
             }
         }
-        return foodType;
+        return null;
     }
 
-    public void AddFood (FoodItem foodType) {
-        Integer foodTypeAmountOrNull = foodCounts.get(foodType);
-        int foodTypeAmount = foodTypeAmountOrNull == null ? 0 : foodTypeAmountOrNull;
+    public void increaseFoodAmount (String cartItemName) {
+        searchCartItemByName(cartItemName).amount++;
+    }
 
-        for (FoodItem foodItem : foodCounts.keySet()) {
-            if (Objects.equals(foodType.name, foodItem.name)) {
-                foodCounts.put(foodType, foodTypeAmount + 1);
-                return;
-            }
+    public void decreaseFoodAmount (String cartItemName) {
+        searchCartItemByName(cartItemName).amount--;
+
+        if (searchCartItemByName(cartItemName).amount == 0) {
+            cartItems.remove(searchCartItemByName(cartItemName));
         }
-
-        foodCounts.put(foodType, 1);
     }
 
-    public void RemoveFood (FoodItem foodType) {
-        Integer foodTypeAmountOrNull = foodCounts.get(foodType);
-        int foodTypeAmount = foodTypeAmountOrNull == null ? 0 : foodTypeAmountOrNull;
+    public void addFood (FoodItem foodItem) {
+        CartItem cartItem = searchCartItemByName(foodItem.getName());
 
-        if (foodTypeAmount <= 1) {
-            foodCounts.remove(foodType);
+        if (cartItem == null) {
+            cartItems.add(new CartItem(foodItem, 1));
         } else {
-            foodCounts.put(foodType, foodTypeAmount - 1);
+            increaseFoodAmount(foodItem.getName());
         }
+    }
+
+    public float countTotalPrice() {
+        float sum = 0;
+
+        for (CartItem cartItem : cartItems) {
+            sum += cartItem.foodItem.price * cartItem.amount;
+        }
+        return sum;
     }
 }

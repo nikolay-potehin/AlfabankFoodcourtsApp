@@ -3,6 +3,8 @@ package com.example.alfabankfoodcourt;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,6 +22,7 @@ public class FoodActivity extends AppCompatActivity {
         FoodItem foodItem = (FoodItem) getIntent().getSerializableExtra("food");
         String restaurantName = getIntent().getStringExtra("restaurantName");
 
+        Button addButton = findViewById(R.id.food_add_button);
         ImageView imageView = findViewById(R.id.food_image_view);
         ImageView backButton = findViewById(R.id.food_back_button);
         TextView restaurantNameView = findViewById(R.id.restaurant_name_text_view);
@@ -40,5 +43,12 @@ public class FoodActivity extends AppCompatActivity {
         eatingTimeView.setText("Прием пищи:");
 
         backButton.setOnClickListener(view -> finish());
+
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AppDataHolder.getInstance().addFood(foodItem);
+            }
+        });
     }
 }

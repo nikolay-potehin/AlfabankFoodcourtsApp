@@ -1,5 +1,6 @@
 package com.example.alfabankfoodcourt;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -99,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         }
 
         // If GPS is on, sort restaurants depending on a user geolocation
-        if (AppDataHolder.getInstance().isUserGPSOn) {
+        try {
             Address userAddress = AppDataHolder.getInstance().getUserAddress();
             float userLatitude = (float) userAddress.getLatitude();
             float userLongitude = (float) userAddress.getLongitude();
@@ -109,6 +110,9 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
             }
 
             Collections.sort(restaurantItems, (item1, item2) -> Float.compare(item1.getDistanceFromUser(), item2.getDistanceFromUser()));
+        } catch (NullPointerException e) {
+            Toast.makeText(MainActivity.this, "Не удалось получить ваше местоположение", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
         }
         return restaurantItems;
     }
@@ -142,6 +146,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         requestQueue.add(stringRequest);
     }
 
+    @NonNull
     private ArrayList<JSONObject> getArrayListFromJSONArray(JSONArray jsonArray) {
         ArrayList<JSONObject> arrayList = new ArrayList<JSONObject>();
         try {
